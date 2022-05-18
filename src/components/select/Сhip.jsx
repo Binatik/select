@@ -20,7 +20,7 @@ const Chip = () => {
       <Chip.Container>
         <Content> Origa</Content>
         {chips?.map(сhip => (
-          <Content>{сhip}</Content>
+          <Content key={сhip}>{сhip}</Content>
         ))}
       </Chip.Container>
     </>
