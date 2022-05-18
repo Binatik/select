@@ -6,7 +6,7 @@ import { openSelect } from "@src/store/redux/slice/selectValue";
 
 const Option = styled.div`
   padding: 15px 10px;
-  flex: 0 0 ${props => props.theme.grid.col3};
+  flex: 1 1 ${props => props.theme.grid.col3};
   background-color: ${props => props.theme.colors.surface};
 `;
 
@@ -36,6 +36,7 @@ const Item = ({ titles }) => {
 
   function open(event) {
     const title = event.target.textContent;
+
     dispatch(openSelect({ title }));
   }
 
@@ -43,7 +44,7 @@ const Item = ({ titles }) => {
     <>
       <Option>
         {titles?.map((title, index) => (
-          <Value onClick={event => open(event)} type="button" key={index}>
+          <Value onClick={open} type="button" key={index}>
             {title}
           </Value>
         ))}

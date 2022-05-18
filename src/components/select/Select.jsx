@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Container } from "@src/store/styled/styleComponents";
 
-import { Chip } from "./Chip";
+import { Chip } from "./Сhip";
 import { Item } from "./Item";
 
 const Selects = styled.div`
@@ -13,11 +13,14 @@ const Selects = styled.div`
 `;
 
 const Select = ({ values }) => {
+  function renderItem(value) {
+    return value.isOpenSelect ? <Item key={value.id} titles={value.titles} /> : null;
+  }
   return (
     <>
       <Container>
         <Chip />
-        <Selects>{values?.map(val => (val.isOpenSelect ? <Item key={val.id} titles={val.titles} сategory={val.сategory} /> : null))}</Selects>
+        <Selects>{values?.map(value => renderItem(value))}</Selects>
       </Container>
     </>
   );
