@@ -1,58 +1,70 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
-  values: [
+  options: [
     {
       id: 1,
       position: 0,
       isOpenSelect: true,
       сategory: null,
-      titles: ["Frontend", "Backend"],
+      values: ["Frontend", "Backend"],
     },
     {
       id: 2,
       position: 1,
       isOpenSelect: false,
       сategory: "Frontend",
-      titles: ["html", "css", "javascript"],
+      values: ["html", "css", "javascript"],
     },
     {
       id: 3,
       position: 2,
       isOpenSelect: false,
       сategory: "html",
-      titles: ["tags"],
+      values: ["tags"],
     },
     {
       id: 4,
       position: 3,
       isOpenSelect: false,
       сategory: "tags",
-      titles: ["div", "span"],
+      values: ["div", "span"],
     },
-
     {
       id: 5,
+      position: 3,
+      isOpenSelect: false,
+      сategory: "div",
+      values: [],
+    },
+    {
+      id: 6,
+      position: 3,
+      isOpenSelect: false,
+      сategory: "span",
+      values: [],
+    },
+    {
+      id: 7,
       position: 1,
       isOpenSelect: false,
       сategory: "Backend",
-      titles: ["node", "python"],
+      values: ["node"],
     },
 
     {
-      id: 6,
+      id: 8,
       position: 2,
       isOpenSelect: false,
       сategory: "node",
-      titles: ["epress"],
+      values: ["epress"],
     },
-
     {
-      id: 7,
+      id: 9,
       position: 2,
       isOpenSelect: false,
-      сategory: "python",
-      titles: ["key"],
+      сategory: "epress",
+      values: [],
     },
   ],
 
@@ -66,17 +78,21 @@ const selectValue = createSlice({
     openSelect(state, action) {
       const { title } = action.payload;
 
-      const current = state.values.find(element => element.сategory === title);
+      const activeElement = state.options.find(element => element.сategory === title);
 
-      state.values = state.values.map(element => {
-        if (current?.position <= element.position) {
+      state.chips.length = 0;
+
+      state.options = state.options.map(element => {
+        if (activeElement?.position <= element.position) {
           element.isOpenSelect = false;
-          state.chips.slice(element.position);
         }
- 
+
         if (element.сategory === title) {
-          state.chips.push(`${element.сategory} =>`);
           element.isOpenSelect = true;
+        }
+
+        if (element.isOpenSelect) {
+          state.chips.push(element.сategory);
         }
         return element;
       });

@@ -12,15 +12,18 @@ const Selects = styled.div`
   display: flex;
 `;
 
-const Select = ({ values }) => {
-  function renderItem(value) {
-    return value.isOpenSelect ? <Item key={value.id} titles={value.titles} /> : null;
+const Select = ({ options }) => {
+  function renderItem(element) {
+    const isLastOpenSelect = element.isOpenSelect && element.values.length === 0;
+    if (isLastOpenSelect) return <h2 key={element.id}> Больше нет селектов, тут любой компонент.</h2>;
+
+    return element.isOpenSelect ? <Item key={element.id} values={element.values} /> : null;
   }
   return (
     <>
       <Container>
         <Chip />
-        <Selects>{values?.map(value => renderItem(value))}</Selects>
+        <Selects>{options?.map(element => renderItem(element))}</Selects>
       </Container>
     </>
   );

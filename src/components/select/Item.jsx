@@ -18,20 +18,17 @@ const Value = styled.button`
   margin: 0 0 10px 0;
   background-color: ${props => props.theme.colors.primary};
   transition: background-color 0.1s;
-
   ${props => props.theme.fontStyle.title};
-
   &:hover {
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.primary};
   }
-
   &:last-child {
     margin: 0;
   }
 `;
 
-const Item = ({ titles }) => {
+const Item = ({ values }) => {
   const dispatch = useDispatch();
 
   function open(event) {
@@ -43,9 +40,9 @@ const Item = ({ titles }) => {
   return (
     <>
       <Option>
-        {titles?.map((title, index) => (
+        {values?.map((value, index) => (
           <Value onClick={open} type="button" key={index}>
-            {title}
+            {value}
           </Value>
         ))}
       </Option>

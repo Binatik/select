@@ -6,11 +6,11 @@ import { getSelectValueState } from "@src/store/redux/index";
 import { Select } from "@cmp/select/Select";
 
 const Main = () => {
-  const { values, chip } = useSelector(getSelectValueState);
+  const { options } = useSelector(getSelectValueState);
 
   return (
     <>
-      <Select values={values} />
+      <Select options={options} />
     </>
   );
 };
