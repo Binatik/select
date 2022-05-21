@@ -32,14 +32,14 @@ const initialState = {
     },
     {
       id: 5,
-      position: 3,
+      position: 4,
       isOpenSelect: false,
       сategory: "div",
       values: [],
     },
     {
       id: 6,
-      position: 3,
+      position: 4,
       isOpenSelect: false,
       сategory: "span",
       values: [],
@@ -61,7 +61,7 @@ const initialState = {
     },
     {
       id: 9,
-      position: 2,
+      position: 3,
       isOpenSelect: false,
       сategory: "epress",
       values: [],
