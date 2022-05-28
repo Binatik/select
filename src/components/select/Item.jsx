@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
-import { openSelect } from "@src/store/redux/slice/selectValue";
+import { renderOptions } from "@src/store/redux/slice/selectValue";
 
 const Option = styled.div`
   padding: 15px 10px;
@@ -16,7 +16,8 @@ const Value = styled.button`
   width: 100%;
   padding: 3px 10px;
   margin: 0 0 10px 0;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => (props.isActive ? props.theme.colors.background : props.theme.colors.primary)};
+  color: ${props => (props.isActive ? props.theme.colors.primary : props.theme.colors.secondary)};
   transition: background-color 0.1s;
   ${props => props.theme.fontStyle.title};
   &:hover {
@@ -28,21 +29,21 @@ const Value = styled.button`
   }
 `;
 
-const Item = ({ values }) => {
+const Item = ({ values, itemId }) => {
   const dispatch = useDispatch();
 
-  function open(event) {
-    const title = event.target.textContent;
+  function render(event, valueId) {
+    const value = event.target.textContent;
 
-    dispatch(openSelect({ title }));
+    dispatch(renderOptions({ itemId, value, valueId}));
   }
 
   return (
     <>
       <Option>
-        {values?.map((value, index) => (
-          <Value onClick={open} type="button" key={index}>
-            {value}
+        {values?.map(value => (
+          <Value key={value.id} isActive={value.isActiveValue} onClick={(event) => render(event, value.id)} type="button">
+            {value.value}
           </Value>
         ))}
       </Option>

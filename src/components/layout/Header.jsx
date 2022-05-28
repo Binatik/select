@@ -4,8 +4,6 @@ import { NavLink } from "react-router-dom";
 
 import { Container } from "@src/store/styled/styleComponents";
 
-import { Burger } from "@cmp/UI/Burger";
-
 const Link = styled(NavLink)`
   margin: 0 15px 0 0;
   display: inline-block;
@@ -30,7 +28,6 @@ const Header = ({ ...props }) => {
           <Link {...props} to="started">
             Дополнительная
           </Link>
-          <Burger />
         </Container>
       </Header.Header>
     </>

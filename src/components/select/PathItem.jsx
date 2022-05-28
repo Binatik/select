@@ -11,26 +11,26 @@ const Content = styled.span`
   }
 `;
 
-const Chip = () => {
-  const { chips } = useSelector(getSelectValueState);
+const PathItem = () => {
+  const { paths } = useSelector(getSelectValueState);
 
   return (
     <>
-      <Chip.Container>
+      <PathItem.Container>
         <Content> Origa</Content>
-        {chips?.map(сhip => (
-          <Content key={сhip}>{сhip}</Content>
+        {paths?.map(tmp => (
+          <Content key={tmp}>➔ {tmp}</Content>
         ))}
-      </Chip.Container>
+      </PathItem.Container>
     </>
   );
 };
 
-Chip.Container = styled.div`
+PathItem.Container = styled.div`
   margin: 0 0 30px 0;
   padding: 25px 10px;
   background-color: ${props => props.theme.colors.surface};
   ${props => props.theme.fontStyle.title};
 `;
 
-export { Chip };
+export { PathItem };
